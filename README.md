@@ -61,8 +61,7 @@ StudentWatch/
 StudentWatch.xcodeproj/            Xcode project to open
 StudentWatchTests/                 XCTest unit tests for countdown logic and layout
 StudentWatchUITests/               XCUITest input, countdown and rotation flow
-Logo/                              E-Monitor logo files and brand board
-docs/assets/                       README images
+design-assets/                     E-Monitor logos, brand board, font, banner, screenshots
 CHANGELOG.md                       Version history
 ```
 
@@ -73,7 +72,7 @@ Run the `StudentWatch` scheme's tests from Xcode (⌘U). Unit tests cover minute
 ## Screenshots
 
 <p align="center">
-  <img src="docs/assets/screenshot-ipad.png" alt="StudentWatch classroom screen on iPad" width="600">
+  <img src="design-assets/screenshots/screenshot-ipad.png" alt="StudentWatch classroom screen on iPad" width="600">
 </p>
 
 ## License
