@@ -10,7 +10,7 @@ iPad/iPhone exam-invigilation app: one screen of 16 desks x 2 seats, each with i
 - `StudentWatch/Assets.xcassets` - app icon and `AppColor1`-`AppColor3` colour sets. `Base.lproj/LaunchScreen.storyboard` is the only storyboard.
 - `StudentWatchTests/` - XCTest unit tests (`CountdownTime`, layout overlap/scroll checks, one check per student label).
 - `StudentWatchUITests/` - XCUITest flow: invalid input, running countdown, rotation, scrolling to student 32; plus launch performance.
-- `Logo/` - E-Monitor brand files (svg/pdf/png, brand board, font). `docs/assets/` - README images. `CHANGELOG.md` - version history (stale, 2023).
+- `design-assets/` - manual brand and design assets: `logo/` (svg/pdf/png), `source/` (brand board), `fonts/`, `banner/`, `screenshots/` (README images). `CHANGELOG.md` - version history (stale, 2023).
 
 ## Commands
 
