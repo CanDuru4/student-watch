@@ -21,7 +21,7 @@ StudentWatch (shipped under the display name E-Monitor) is an iPad and iPhone ap
 | Layer | What is used |
 | --- | --- |
 | Language / UI | Swift 5.0, UIKit (programmatic views and Auto Layout, only `LaunchScreen.storyboard`) |
-| Timing and alerts | `Timer.scheduledTimer`, `UIAlertController` |
+| Timing and alerts | `Timer` added to the main run loop in `.common` mode (via `RunLoop.main.add(_:forMode:)`), `UIAlertController` |
 | Assets | SF Symbols (`studentdesk`, `arrow.counterclockwise`) and asset-catalog colour sets |
 | Dependencies | None (no CocoaPods, Carthage or Swift Package Manager packages) |
 
@@ -38,7 +38,7 @@ StudentWatch (shipped under the display name E-Monitor) is an iPad and iPhone ap
 
    ```bash
    git clone https://github.com/CanDuru4/student-watch.git
-   open StudentWatch/StudentWatch.xcodeproj
+   open student-watch/StudentWatch.xcodeproj
    ```
 
 2. Select the shared `StudentWatch` scheme and an iPad or iPhone simulator, or a connected device.
