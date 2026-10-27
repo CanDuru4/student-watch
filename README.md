@@ -81,4 +81,4 @@ MIT. See [LICENSE](LICENSE).
 
 ## Author
 
-Can Duru — [canduru.net](https://canduru.net)
+Can Duru, [canduru.net](https://canduru.net)

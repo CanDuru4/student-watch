@@ -18,9 +18,9 @@ The Xcode project is at the repo root (`StudentWatch.xcodeproj`); single shared 
 
 ```bash
 xcodebuild -list -project StudentWatch.xcodeproj
-xcodebuild build -project StudentWatch.xcodeproj -scheme StudentWatch -destination 'generic/platform=iOS Simulator'
-xcodebuild test -project StudentWatch.xcodeproj -scheme StudentWatch -destination 'platform=iOS Simulator,name=<installed iPad or iPhone>'
-xcodebuild test -project StudentWatch.xcodeproj -scheme StudentWatch -destination '<same>' -only-testing:StudentWatchTests
+xcodebuild build -project StudentWatch.xcodeproj -scheme StudentWatch -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO
+xcodebuild test -project StudentWatch.xcodeproj -scheme StudentWatch -destination 'platform=iOS Simulator,name=student-watch-17'
+xcodebuild test -project StudentWatch.xcodeproj -scheme StudentWatch -destination 'platform=iOS Simulator,name=student-watch-17' -only-testing:StudentWatchTests
 ```
 
 - Tests need an installed iOS simulator runtime (`xcrun simctl list runtimes`); unit/UI test targets require iOS 17+.
@@ -40,11 +40,9 @@ xcodebuild test -project StudentWatch.xcodeproj -scheme StudentWatch -destinatio
 
 - `README.md` - features, setup (signing: replace the checked-in team and bundle id for device builds), project structure, testing notes.
 
-## Validation placement and reuse (owner update 2026-10-26)
+## Validation
 
-- Follow the global Claude/Codex test policy and `~/Developer/personal/mac-mini/validation-economy/README.md` and `COVERAGE.md`. Focus first; full coverage only when the changed inputs require it. Docs-only policy edits need no application suite or deploy.
-- Use `~/Developer/personal/mac-mini/validation-economy/remote-run.py` for every check that can run on Linux (owner rule 2026-10-27: "all the things that we can run on pc must be on pc"): tests, lint, typecheck, Node and web checks. The Mini keeps only what needs macOS or a device, each such chunk with its reason written in the gate map; this repo wires the route in its own gate, and Linux-capable work left on the Mini is a bug to fix here. It defaults to `gaming-pc` and handles connection and bounded Wake-on-LAN automatically; call it directly without a separate online check or asking the owner each time. Match the pinned runtime and locked dependencies, bound actual workers, and preserve repo data-export restrictions. Never export credentials, production data, signing keys or uncommitted work.
-- The PC pool shares eight CPU slots and 24 GiB across isolated jobs with zero test swap; retain automatic job cleanup, the 8 GiB package-cache budget and 128 GiB virtual-disk cap. Brain is an explicit secondary route (`--runner brain`) when compatible, capped at two CPUs and 4 GiB together. If the PC remains unavailable after bounded wake/connect, report the blocker; never silently start the same work on the Mini or replay an uncertain submitted job.
-- Xcode, Swift, simulator, signing and device checks stay on the Mini. The PC Linux runner has no Apple toolchain; only compatible ancillary Python/Node checks are eligible.
-- For work that must run on the Mini: manual heavy commands use `repo-run.py --repo <absolute checkout> --profile <profile> -- <command>` from the shared helper; choose from native for the actual tool. Tiny syntax checks need no reservation. Bound tool workers and reserve separate heavy phases.
-- Reuse only supported receipts with matching source, coverage, dependencies, runtime/platform and relevant environment. Preserve passed unaffected batches; count remote results only when the owning gate aggregates them. Receipts do not replace required build artifacts or OS/device/browser proof. Split or offload an impossible reservation instead of waiting indefinitely; only stop your own obsolete jobs. Existing gates need explicit remote routing and matching-result aggregation; this instruction does not automatically move unintegrated commands.
+Mac-only: builds and tests need Xcode and a simulator, so they run on the Mini (global "Tests, CI and deploy"). Reuse this project's simulator per `~/Developer/personal/mac/ios-simulators.md`.
+
+- Simulator: `student-watch-17` (create once with `xcrun simctl create`, never borrow `krystal-17` or `nar-17`); shut it down when the task ends.
+- DerivedData: keep the default (symlinked to the ExtSSD); do not pass `-derivedDataPath`.
