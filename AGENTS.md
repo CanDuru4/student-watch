@@ -1,6 +1,6 @@
 # StudentWatch (E-Monitor)
 
-iPad/iPhone exam-invigilation app: one screen of 16 desks x 2 seats, each with its own countdown timer for 32 students. Personal portfolio project (modernized in 2026-09, PR #4). Swift 5, UIKit (programmatic), no third-party dependencies. Public repo, MIT.
+iPad/iPhone exam-invigilation app: one screen of 16 desks x 2 seats, each with its own countdown timer for 32 students. Personal portfolio project. Swift 5, UIKit (programmatic), no third-party dependencies. Public repo, MIT.
 
 ## Repo map
 
@@ -35,10 +35,6 @@ xcodebuild test -project StudentWatch.xcodeproj -scheme StudentWatch -destinatio
 - The UI is in Turkish, and UI tests find elements by those exact strings (for example `Öğrenci 1: Süreyi Ayarla`, `Sınav Süresi`, `Tamam`, `Geçersiz süre`, `Sıra 1 (Öğrenci 1-2)`). Changing copy means updating the tests.
 - Deployment targets: app iOS 15.0, test targets iOS 17.x. Display name `E-Monitor`, bundle id `com.CanDuru.StudentWatch`, device family iPhone + iPad.
 - No secrets, API keys, or env vars exist; the app is fully offline. Keep it that way in this public repo.
-
-## Docs
-
-- `README.md` - features, setup (signing: replace the checked-in team and bundle id for device builds), project structure, testing notes.
 
 ## Validation
 
